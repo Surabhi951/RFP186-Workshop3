@@ -5,7 +5,6 @@ public class DeckOfCards {
         DeckOfCards deckOfCards = new DeckOfCards();
         deckOfCards.initializeCards();
     }
-
     void initializeCards(){
         System.out.println("initializing cards...");
         int cardIndex=0;
