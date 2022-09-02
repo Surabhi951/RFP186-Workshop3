@@ -10,6 +10,7 @@ public class DeckOfCards {
         deckOfCards.initializeCards();
         deckOfCards.addPlayers();
     }
+    
     void initializeCards(){
         System.out.println("initializing cards...");
         int cardIndex=0;
@@ -21,6 +22,7 @@ public class DeckOfCards {
         }
         printCards(Card.cardArray);
     }
+    
     void printCards(Card[] cards){
         System.out.print("Cards{");
         for (Card card : cards) {
@@ -28,6 +30,7 @@ public class DeckOfCards {
         }
         System.out.println("}");
     }
+    
     void addPlayers(){
         int numOfPlayers;
         do {
@@ -38,5 +41,6 @@ public class DeckOfCards {
             Player.addPlayer(new Player());
         }
         System.out.println("players added: "+numOfPlayers);
-    }
-}
+     }
+ }
+
