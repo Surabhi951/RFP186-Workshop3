@@ -1,5 +1,4 @@
 package com.bridgelabz;
-
 public class Card {
     public static final String[] suitArray =new String[]{"Clubs", "Diamonds", "Hearts", "Spades"};
     public static final String[] rankArray =new String[]{"2", "3", "4", "5", "6", "7", "8","9", "10", "Jack", "Queen", "King", "Ace"};
