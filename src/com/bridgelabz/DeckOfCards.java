@@ -3,21 +3,22 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class DeckOfCards {
-    static Scanner scanner=new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        DeckOfCards deckOfCards=new DeckOfCards();
+        DeckOfCards deckOfCards = new DeckOfCards();
         deckOfCards.initializeCards();
         deckOfCards.addPlayers();
         deckOfCards.changePlayerOrder();
+        deckOfCards.shuffleCards();
     }
     
     void initializeCards(){
         System.out.println("initializing cards...");
-        int cardIndex=0;
+        int cardIndex = 0;
         for (int i = 0; i < Card.suitArray.length; i++) {
             for (int j = 0; j < Card.rankArray.length; j++) {
-                Card card=new Card(Card.suitArray[i],Card.rankArray[j]);
-                Card.cardArray[cardIndex++]=card;
+                Card card = new Card(Card.suitArray[i],Card.rankArray[j]);
+                Card.cardArray[cardIndex++] = card;
             }
         }
         printCards(Card.cardArray);
@@ -39,7 +40,7 @@ public class DeckOfCards {
         } while (numOfPlayers < 2 || numOfPlayers > 4);
         for (int i = 0; i < numOfPlayers; i++) {
             System.out.println("enter new planer name");
-            String playerName=scanner.next();
+            String playerName = scanner.next();
             Player.addPlayer(new Player(playerName));
         }
         System.out.println("players added: "+numOfPlayers);
@@ -57,18 +58,27 @@ public class DeckOfCards {
                  do{
                      System.out.println("Enter player:" + (i + 1) + "name");
                      player = Player.getPlayer(scanner.next());
-                     swapPlayer(i, Player.playerList.indexOf(player));
+                     Player.swapPlayer(i, Player.playerList.indexOf(player));
                  }while (player == null);
 
              }
          }
-
-     }
-    public void swapPlayer(int i, int j){
-        Player player=Player.playerList.get(i);
-        Player.playerList.add(i,Player.playerList.get(j));
-        Player.playerList.add(j,player);
+         System.out.println(Player.playerList);
     }
 
+    void shuffleCards(){
+        System.out.println("shuffling Cards...");
+        for (int i = 0; i < Card.cardArray.length; i++) {
+            int random = ( (int)( Math.random() * 1000 ) % (Card.cardArray.length - 1) );
+            swapCards(i, random);
+        }
+        printCards(Card.cardArray);
+    }
+
+    void swapCards(int i, int j){
+        Card temp = Card.cardArray[i];
+        Card.cardArray[i] = Card.cardArray[j];
+        Card.cardArray[j] = temp;
+    }
 }
 
