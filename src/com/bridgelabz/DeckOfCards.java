@@ -12,6 +12,7 @@ public class DeckOfCards {
         deckOfCards.changePlayerOrder();
         deckOfCards.shuffleCards();
         deckOfCards.distributeCards(Player.playerList, Card.cardArray);
+        deckOfCards.printAllPlayerCards();
     }
     
     void initializeCards(){
@@ -90,6 +91,13 @@ public class DeckOfCards {
             for (int i = 0; i < 9; i++) {
                 player.playerCards[i]=cardArray[cardIndex++];
             }
+        }
+    }
+
+    public void printAllPlayerCards(){
+        for (int i = 0; i < Player.playerList.size(); i++) {
+            System.out.print("Player-" + (i+1) +" ");
+            printCards(Player.playerList.get(i).playerCards);
         }
     }
 }
